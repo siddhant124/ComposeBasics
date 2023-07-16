@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
                                     viewModel2.removeItemFromList(it)
                                 }) {
                                     Icon(
-                                        imageVector = Icons.Default.Delete, contentDescription = ""
+                                        imageVector = Icons.Default.Delete, contentDescription = null
                                     )
                                 }
                             }
