@@ -56,87 +56,50 @@ class MainActivity : ComponentActivity() {
                 val viewModel2 by viewModels<ChangeBackgroundViewModel>()
                 // A surface container using the 'background' color from the theme
 
-                val scrollState = rememberScrollState()
 
-                // TODO: Add item to the list
-                Scaffold(
-                    floatingActionButton = {
-                        FloatingActionButton(onClick = {
-                            viewModel2.addItemToList("New User")
-                        }) {
-                            Icon(imageVector = Icons.Default.Add, contentDescription = "")
-                        }
-                    }
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(viewModel2.backgroundColor)
+                        .verticalScroll(rememberScrollState()),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
                 ) {
-                    Column(
-                        modifier = Modifier.padding(20.dp)
-                            .verticalScroll(scrollState),
-                    ) {
-                        viewModel2.itemList.forEach {
-
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween
-                            ) {
-                                Text(text = it)
-                                IconButton(onClick = {
-                                    viewModel2.removeItemFromList(it)
-                                }) {
-                                    Icon(
-                                        imageVector = Icons.Default.Delete, contentDescription = ""
-                                    )
-                                }
-                            }
-
-                        }
-                    }
-                }
 
 
-//
-//                Column(
-//                    modifier = Modifier
-//                        .fillMaxSize()
-//                        .background(viewModel2.backgroundColor),
-//                    horizontalAlignment = Alignment.CenterHorizontally,
-//                    verticalArrangement = Arrangement.Center
-//                ) {
-
-
-                // TODO: Increment counter on button click
-                /*
+                    // TODO: Increment counter on button click
                     Text(text = viewModel2.counter.toString())
                     Button(onClick = {
                         viewModel2.incrementCount(viewModel2.counter)
                     }) {
                         Text(text = "Click me to increment the count")
                     }
-                */
 
 
-                // Change background color on button click
-                // ChangeBackgroundOnButtonClick(viewModel2, Modifier.align(Alignment.Center))
+                    // Change background color on button click
+                    ChangeBackgroundOnButtonClick(viewModel2, Modifier.padding(10.dp))
 
-                /** Explicit Intent Example */
-                // TODO: Open second activity on button click
-                // OpenSecondActivityOnButtonClick(Modifier.align(Alignment.Center))
+                    /** Explicit Intent Example */
+                    // TODO: Open second activity on button click
+                    OpenSecondActivityOnButtonClick(Modifier.padding(10.dp))
 
-                // TODO: Open youtube app on clicking button
-                // OpenYoutubeOnButtonClick(Modifier.align(Alignment.Center))
+                    // TODO: Open youtube app on clicking button
+                    OpenYoutubeOnButtonClick(Modifier.padding(10.dp))
 
 
-                /** Implicit Intent */
-                // On button click open a chooser that show all possibilities for sending mail
-                // OpenEmailChooserOnButtonCLick(modifier = Modifier.padding(10.dp))
+                    /** Implicit Intent */
+                    // On button click open a chooser that show all possibilities for sending mail
+                    OpenEmailChooserOnButtonCLick(modifier = Modifier.padding(10.dp))
 
-                // TODO: to open shared image from any app
-                /* viewModel.uri?.let {
-                    AsyncImage(model = viewModel.uri, contentDescription = null)
-                } */
-//                }
+                    // TODO: to open shared image from any app
+                    viewModel.uri?.let {
+                        AsyncImage(model = viewModel.uri, contentDescription = null)
+                    }
+                }
             }
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -219,5 +182,5 @@ class MainActivity : ComponentActivity() {
         viewModel.updateUri(uri)
     }
 
-}
 
+}

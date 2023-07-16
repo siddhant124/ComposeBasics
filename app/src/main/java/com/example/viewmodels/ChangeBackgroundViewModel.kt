@@ -33,18 +33,4 @@ class ChangeBackgroundViewModel: ViewModel() {
         this.counter = counter+1
     }
 
-
-
-    var itemList = mutableStateListOf("Siddhant", "Nikhil", "Adarsh", "Sahil")
-        private set
-
-
-    fun addItemToList(item: String){
-        this.itemList.add(item)
-    }
-
-    fun removeItemFromList(item: String){
-        this.itemList.remove(item)
-    }
-
 }
